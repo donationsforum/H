@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate 💖</title>
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9966, #ff5e62); /* 🔥 Two-colour gradient */
+    color: #fff;
+    padding: 20px;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    max-width: 400px;
+    padding: 30px 25px;
+    text-align: center;
+    animation: fadeIn 0.6s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    font-size: 15px;
+    color: #fff;
+    margin-bottom: 30px;
+    line-height: 1.6;
+  }
+
+  .upi-container {
+    background: #fff;
+    color: #333;
+    border-radius: 12px;
+    padding: 14px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  .upi-id {
+    font-weight: 600;
+    word-break: break-all;
+  }
+
+  button {
+    background: linear-gradient(135deg, #ff5e62, #ff9966);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(255, 94, 98, 0.6);
+  }
+
+  .footer {
+    margin-top: 25px;
+    font-size: 13px;
+    color: #fff;
+  }
+
+  /* Popup */
+  .popup {
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: #fff;
+    color: #333;
+    padding: 18px 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+    font-weight: 600;
+    z-index: 100;
+  }
+
+  .popup.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Donate Me 💖</h1>
+  <p>Your love and support mean everything!  
+  Thank you for helping me grow 🙏</p>
+
+  <div class="upi-container">
+    <span class="upi-id" id="upiId">kzack5431@okhdfcbank</span>
+    <button onclick="copyUPI()">Copy</button>
+  </div>
+
+  <div class="footer">Appreciate your kindness ❤️</div>
+</div>
+
+<div class="popup" id="popup">✅ UPI ID copied!</div>
+
+<script>
+function copyUPI() {
+  const upiText = document.getElementById("upiId").textContent;
+  navigator.clipboard.writeText(upiText).then(() => {
+    const popup = document.getElementById("popup");
+    popup.classList.add("show");
+    setTimeout(() => popup.classList.remove("show"), 1500);
+  });
+}
+</script>
+
+</body>
+</html>
